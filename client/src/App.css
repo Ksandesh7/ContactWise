@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.start-bar {
+  background-color: #c8c9ca;
+}
+
+.row {
+
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: url('https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center/cover; */
+  /* background-color: rgb(37, 37, 56); */
+  padding: 50px 0;    
+  /* border: 2px solid red; */
+  /* background-color: #474e5d; */
+  background-color:#d2d6e0;
+  width: 100%;
+  margin: 0;
+}
+
+.column {
+  /* float: left; */
+  width: 25%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  width: 250px;
+  /* border-radius: 10px; */
+  /* border: 2px solid blue; */
+  border-radius: 10px;
+  /* background: #474e5d; */
+}
+
+
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  /* background-image: url('https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&w=600'); */
+  background-size: cover;
+  background-repeat: no-repeat ;
+  background-position: center;
+  /* border: 2px solid yellow; */
+  /* opacity: 0.4; */
+  color: white;
+}
+
+.about-section h1{
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px ;
+}
+
+.about-section p{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.container {
+  padding: 0 16px;
+  height: 280px;
+  /* border: 2px solid aqua; */
+  /* background-color: rgb(253, 249, 249); */
+  /* background: #474e5d; */
+  border-radius: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+  /* color: white; */
+}
+
+.container p{
+  /* width: 350px; */
+  padding: 20px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: #474e5d;
+  color: white;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+
+
+
+
+/* ALL USERS */
+.alluser_body {
+  background-color: #f2f6fb;
+  padding: 20px;
+}
+
+
+/* ADD USERS */
+.adduser_body {
+  background-color: #f2f6fb;
+  padding: 40px;
+  height: 100vh;
+}
+
+
+/* EDIT USERS */
+.edituser_body {
+  background-color: #f2f6fb;
+  padding: 40px;
+  height: 100vh;
+}
