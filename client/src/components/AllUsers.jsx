@@ -59,7 +59,7 @@ export default function AllUsers() {
             <TableCell>Last Name</TableCell>
             <TableCell>E-mail</TableCell>
             <TableCell>Contact No.</TableCell>
-            <TableCell>Address</TableCell>
+            {/* <TableCell>Address</TableCell> */}
             <TableCell></TableCell>
           </THead>
         </TableHead>
@@ -75,7 +75,7 @@ export default function AllUsers() {
                     <TableCell>{user.username}</TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.phone}</TableCell>
-                    <TableCell>{user.address}</TableCell>
+                    {/* <TableCell>{user.address}</TableCell> */}
                     <TableCell>
                         <Button variant='contained' style={{margin: 10}} component={Link} to={`/editUser/${user.userId}`}>Edit</Button>
                         <Button variant='contained' color='secondary' onClick={()=> deleteuser(user.userId)}>Delete</Button>
