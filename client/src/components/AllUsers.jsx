@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Table, TableBody, TableCell, TableHead, TableRow, styled } from '@mui/material'
 import '../App.css'
 
-import { getUsers, deleteUser} from '../service/api'
+import { getUsers, deleteUser, getRelationships} from '../service/api'
 import { Link } from 'react-router-dom'
 
 const StyledTable = styled(Table)`
@@ -30,10 +30,11 @@ const TBody = styled(TableRow)`
 export default function AllUsers() {
 
   const [users, setUsers] = useState([])
-
+  const [relationships, setRelationships] = useState([]);
 
   useEffect(() => {
     getAllUsers();  
+    getAllRelationships();
   }, []);
   
   const getAllUsers = async() => {
@@ -41,6 +42,12 @@ export default function AllUsers() {
     // console.log(response);
     setUsers(response.data);
   }
+
+  const getAllRelationships = async () => {
+    // Fetch relationship types and update the state
+    let response = await getRelationships();
+    setRelationships(response.data);
+  };
 
   const deleteuser = async (id) => {
     await deleteUser(id);
@@ -60,6 +67,7 @@ export default function AllUsers() {
             <TableCell>E-mail</TableCell>
             <TableCell>Contact No.</TableCell>
             {/* <TableCell>Address</TableCell> */}
+            <TableCell>Relationship Type</TableCell>
             <TableCell></TableCell>
           </THead>
         </TableHead>
@@ -75,6 +83,10 @@ export default function AllUsers() {
                     <TableCell>{user.username}</TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.phone}</TableCell>
+                    <TableCell>
+                      {/* Find the corresponding relationship type for this user */}
+                      {relationships.find((relationship) => relationship.userId === user.userId)?.type}
+                    </TableCell>
                     {/* <TableCell>{user.address}</TableCell> */}
                     <TableCell>
                         <Button variant='contained' style={{margin: 10}} component={Link} to={`/editUser/${user.userId}`}>Edit</Button>

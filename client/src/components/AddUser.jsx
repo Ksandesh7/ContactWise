@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button, FormControl, FormGroup, Input, InputLabel, Typography } from '@mui/material'
+import { Button, FormControl, FormGroup, Input, InputLabel, Typography, Select, MenuItem } from '@mui/material'
 import styled from '@emotion/styled'
 import '../App.css';
 
@@ -31,6 +31,7 @@ const defaultValue = {
 export default function AddUser() {
 
   const [user, setUser] = useState(defaultValue)
+  const [selectedRelationship, setSelectedRelationship] = useState("")
 
   const navigate = useNavigate()
 
@@ -40,9 +41,24 @@ export default function AddUser() {
       console.log(user)
   }
 
+  const onRelationshipChange = (e) => {
+    setSelectedRelationship(e.target.value);
+  };
+
+
   const addUserDetails = async() => {
-      await addUser(user)
-      navigate('/allUser')
+
+      const newUser = {
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        phone: user.phone,
+        address: user.address,
+        relationship: selectedRelationship, // Add the selected relationship
+      };
+    
+      await addUser(newUser);
+      navigate('/allUser');
   }
 
   return (
@@ -72,6 +88,15 @@ export default function AddUser() {
       <FormControl>
         <InputLabel>Address</InputLabel>
         <Input onChange={(e)=>onValueChange(e)} name='address' required/>
+      </FormControl>
+
+      <FormControl>
+        <InputLabel>Relationship Type</InputLabel>
+        <Select value={selectedRelationship} onChange={(e)=>onRelationshipChange(e)}>
+          <MenuItem value="family">Family</MenuItem>
+          <MenuItem value="friend">Friend</MenuItem>
+          <MenuItem value="colleague">Colleague</MenuItem>
+        </Select>
       </FormControl>
 
       <FormControl>

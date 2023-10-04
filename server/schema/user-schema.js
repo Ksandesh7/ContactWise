@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema({
     email: String,
     phone: String,
     address: String,
+    relationships: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Relationship', // Reference to the Relationship model
+    }],
 })
 
 // autoIncrement.initialize(mongoose.connection);
@@ -36,6 +40,7 @@ userSchema.pre('save', function (next) {
 
 
 const user = mongoose.model('user', userSchema)
+
 
 export default user;
 

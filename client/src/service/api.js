@@ -41,3 +41,12 @@ export const deleteUser = async(id) => {
         console.log("Error while calling deleteUser API", error);        
     }
 }
+
+// Define and export the getRelationships function
+export const getRelationships = async () => {
+    try {
+        return await axios.get(`${URL}/relationships`);
+    } catch (error) {
+        console.log("Error while calling getRelationships API", error);        
+    }
+}

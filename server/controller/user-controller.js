@@ -1,14 +1,24 @@
-
 import User from '../schema/user-schema.js'
+import Relationship from '../schema/relationship-schema.js'
 
 
 export const adduser = async(request, response) => {
     const user =request.body;
 
+    const { relationship } = user;
+
     const newUser = new User(user);
+
+    const newRelationship = new Relationship({
+        type: relationship,
+        userId: newUser._id, // Link to the newly created user
+    });
 
     try {
         await newUser.save();
+        // Create a new relationship entry and link it to the user's ID
+        
+        await newRelationship.save(); // Save the relationship
         response.status(201).json(newUser);
     } catch (error) {
         response.status(409).json({message:error.message});
